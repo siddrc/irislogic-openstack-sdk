@@ -1,5 +1,5 @@
 'use strict'
-var node-rest-client = require("node-rest-client");
+var nodeRestClient = require("node-rest-client");
 exports.authenticate = function(){
 	console.log("in authenticate")
 }
