@@ -1,5 +1,8 @@
 {
   "name": "irislogic-openstack-sdk",
   "version": "0.2.0",
-  "dependencies": {}
+  "dependencies": {
+    "node-rest-client": "^3.0.0"
+  },
+  "main": "./index.js"
 }
