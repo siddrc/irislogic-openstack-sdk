@@ -4,5 +4,6 @@
   "dependencies": {
     "node-rest-client": "^3.0.0"
   },
-  "main": "./index.js"
+  "main": "./index.js",
+  "author" : "Siddharth Roychoudhury <debu2in@gmail.com>"
 }
