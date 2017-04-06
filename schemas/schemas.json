@@ -1,0 +1,39 @@
+{
+
+    "authenticateSchema": {
+        "additionalProperties": true,
+        "properties": {
+            "auth": {
+                "properties": {
+                    "tenantName": {
+                        "type": "string"
+                    },
+                    "passwordCredentials": {
+                        "properties": {
+                            "username": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "restartSchema": {
+        "additionalProperties": true,
+        "properties": {
+            "protocol": {
+                "type": "string"
+            },
+            "openStackHost": {
+                "type": "string"
+            },
+            "serverId": {
+                "type": "string"
+            }
+        }
+    }
+}
