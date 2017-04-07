@@ -1,5 +1,5 @@
 var constants = require("../constants");
-var http = require("../http");
+var HttpClient = 
 var Schemas = require("../schemas/schemas")
 function Restart() {}
 Restart.prototype.restartInstance = function(token, inputArgs) {
@@ -18,6 +18,7 @@ Restart.prototype.restartInstance = function(token, inputArgs) {
                 "Content-Type": "application/json"
             }
         };
+        var httpClient = new HttpClient();
         inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.constants.getComputePort() + "/v2/servers/" + inputArgs.serverId;
         http.request.sendPostRequest(inputArgs);
     } else {

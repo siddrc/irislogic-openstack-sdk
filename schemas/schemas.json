@@ -5,21 +5,32 @@
         "properties": {
             "auth": {
                 "properties": {
-                    "tenantName": {
-                        "type": "string"
-                    },
-                    "passwordCredentials": {
+                    "auth": {
                         "properties": {
-                            "username": {
+                            "tenantName": {
                                 "type": "string"
                             },
-                            "password": {
-                                "type": "string"
+                            "passwordCredentials": {
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         }
                     }
                 }
+            },
+            "openStackHost":{
+                "type" : "string"
+            },
+            "protocol" :{
+                "type" : "string"
             }
+
         }
     },
     "restartSchema": {

@@ -1,12 +1,13 @@
+//TODO:test if connection fails
 var chai = require('chai');
 const chaiJWT = require('chai-jwt');
 chai.use(chaiJWT);
 var expect = chai.expect; 
-var Authentication = require("../entities/keystone/authentication");
+var Server = require("../entities/servers/servers");
 
-describe('Authenticate', function() {
-    it('authenticate() should return a valid JWT token', function() {
-        var authentication = new Authentication();
+describe('Restart server', function() {
+    it('restart() should restart the openstack instance', function() {
+        var server = new Server();
         var inputArgs = {};
         inputArgs.openStackHost = "54.227.13.130";
         inputArgs.protocol = "http";
@@ -26,6 +27,6 @@ describe('Authenticate', function() {
             else
                 expect(token).to.be.a.jwt;
         }
-        authentication.authenticate(inputArgs)
+        server.restart(inputArgs)
     });
 });
