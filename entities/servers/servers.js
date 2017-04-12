@@ -1,4 +1,3 @@
-var restart = require("");
 var remove =  require("./remove")
 var Authentication = require("../keystone/authentication");
 var Restart = require("./restart");
