@@ -1,9 +1,10 @@
-var constants = require("../constants");
-var HttpClient = require("../http/httpclient");
-var Schemas = require("../schemas/schemas");
+var Constants = require("../../constants");
+var HttpClient = require("../../http/httpclient");
+var Schemas = require("../../schemas/schemas");
 function Remove() {}
 Remove.prototype.removeInstance = function(token, inputArgs) {
     var schemas = new Schemas();
+    var constants =  new Constants();
     var validSchema = schemas.validateData("restartSchema", inputArgs);
     if (!validSchema.error) {
         var args = {

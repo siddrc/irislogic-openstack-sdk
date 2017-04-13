@@ -1,6 +1,6 @@
-var constants = require("../constants");
-var HttpClient = 
-var Schemas = require("../schemas/schemas")
+var constants = require("../../constants");
+var HttpClient = require("../../http/httpclient");
+var Schemas = require("../../schemas/schemas")
 function Restart() {}
 Restart.prototype.restartInstance = function(token, inputArgs) {
     var schemas = new Schemas();
@@ -20,7 +20,7 @@ Restart.prototype.restartInstance = function(token, inputArgs) {
         };
         var httpClient = new HttpClient();
         inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.constants.getComputePort() + "/v2/servers/" + inputArgs.serverId;
-        http.request.sendPostRequest(inputArgs);
+        httpClient.sendPostRequest(inputArgs);
     } else {
         inputArgs.errorCallback(validSchema.errors);
     }
