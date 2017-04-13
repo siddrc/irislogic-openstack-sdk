@@ -1,4 +1,4 @@
-var Constants = require("../../constants");
+var Constants = require("../../constants/constants");
 var HttpClient = require("../../http/httpclient");
 var Schemas = require("../../schemas/schemas");
 function Remove() {}
