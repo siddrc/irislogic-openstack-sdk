@@ -19,8 +19,9 @@ Restart.prototype.restartInstance = function(token, inputArgs) {
             }
         };
         var httpClient = new HttpClient();
-        inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.constants.getComputePort() + "/v2/servers/" + inputArgs.serverId;
+        inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.constants.getComputePort() + "/v2/servers/" + inputArgs.serverId+"/action";
         httpClient.sendPostRequest(inputArgs);
+        
     } else {
         inputArgs.errorCallback(validSchema.errors);
     }

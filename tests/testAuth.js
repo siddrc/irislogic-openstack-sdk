@@ -8,17 +8,16 @@ describe('Authenticate', function() {
     it('authenticate() should return a valid JWT token', function() {
         var authentication = new Authentication();
         var inputArgs = {};
-        inputArgs.openStackHost = "54.227.13.130";
+        inputArgs.openStackHost = "54.227.31-----.130";
         inputArgs.protocol = "http";
         inputArgs.auth = {
             "auth": {
                 "tenantName": "admin",
                 "passwordCredentials": {
                     "username": "admin",
-                    "password": "irislogic@007"
+                    "password": "*********"
                 }
             }
-
         }
         inputArgs.callback = function(errors, token) {
             if (errors)
