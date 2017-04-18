@@ -9,15 +9,15 @@ describe('Restart server', function() {
     it('restart() should restart the openstack instance', function() {
         var server = new Server();
         var inputArgs = {};
-        inputArgs.openStackHost = "54.227.13.130";
+        inputArgs.openStackHost = "";
         inputArgs.protocol = "http";
-        inputArgs.serverId = "b80c6e30-8a65-4804-93cf-701c540fc1d0";
+        inputArgs.serverId = "";
         inputArgs.auth = {
             "auth": {
-                "tenantName": "admin",
+                "tenantName": "",
                 "passwordCredentials": {
-                    "username": "admin",
-                    "password": "irislogic@007"
+                    "username": "",
+                    "password": ""
                 }
             }
 
