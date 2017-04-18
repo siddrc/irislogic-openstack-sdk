@@ -1,9 +1,11 @@
-var constants = require("../../constants/constants");
+var Constants = require("../../constants/constants");
 var HttpClient = require("../../http/httpclient");
 var Schemas = require("../../schemas/schemas")
+
 function Restart() {}
 Restart.prototype.restartInstance = function(token, inputArgs) {
     var schemas = new Schemas();
+    var constants = new Constants();
     var validSchema = schemas.validateData("restartSchema", inputArgs);
     if (!validSchema.error) {
         var data = {
@@ -18,10 +20,11 @@ Restart.prototype.restartInstance = function(token, inputArgs) {
                 "Content-Type": "application/json"
             }
         };
+        inputArgs.args = args;
         var httpClient = new HttpClient();
-        inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.constants.getComputePort() + "/v2/servers/" + inputArgs.serverId+"/action";
+        inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.getComputePort() + "/v2/servers/" + inputArgs.serverId + "/action";
         httpClient.sendPostRequest(inputArgs);
-        
+
     } else {
         inputArgs.errorCallback(validSchema.errors);
     }

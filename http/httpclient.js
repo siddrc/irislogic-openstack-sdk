@@ -2,6 +2,14 @@ var Client = require("node-rest-client").Client;
 var promisify = require("promisify-node");
 //Client = promisify(Client);
 function HttpClient(){}
+HttpClient.prototype.sendGetRequest = function(inputArgs){
+var client = new Client();
+    var req = client.get(inputArgs.apiURL, inputArgs.args,
+        function(data, response) {
+            return inputArgs.callback(null, data)
+        });
+    requestSensors(req, inputArgs)
+}
 HttpClient.prototype.sendPostRequest = function(inputArgs) {
     var client = new Client();
     var req = client.post(inputArgs.apiURL, inputArgs.args,
