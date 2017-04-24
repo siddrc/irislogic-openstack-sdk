@@ -31,11 +31,7 @@ HttpClient.prototype.sendDeleteRequest = function(inputArgs) {
 function requestSensors(req, inputArgs) {
     req.on('error', function(err) {
         err = JSON.parse(CircularJSON.stringify(err));
-        console.log('request error'+JSON.stringify(err,null,2));
-        var error = {
-            msg: err
-        }
-        inputArgs.callback(error, null)
+        inputArgs.callback(err, null)
     });
     req.on('requestTimeout', function(req) {
         console.log('Request has expired');
