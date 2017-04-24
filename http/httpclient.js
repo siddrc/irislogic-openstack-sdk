@@ -31,6 +31,7 @@ HttpClient.prototype.sendDeleteRequest = function(inputArgs) {
 function requestSensors(req, inputArgs) {
     req.on('error', function(err) {
         err = JSON.parse(CircularJSON.stringify(err));
+        console.log("Error : > ",JSON.stringify(err));
         inputArgs.callback(err, null)
     });
     req.on('requestTimeout', function(req) {
