@@ -18,7 +18,10 @@ Remove.prototype.removeInstance = function(token, inputArgs) {
         inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.getComputePort() + "/v2/servers/" + inputArgs.serverId;
         httpClient.sendDeleteRequest(inputArgs);
     } else {
-        inputArgs.errorCallback(validSchema.errors);
+        var error = {
+            msg : ""+validSchema.errors
+        }
+        inputArgs.callback(error,null);
     }
 }
 module.exports = Remove;

@@ -1,9 +1,9 @@
 var Client = require("node-rest-client").Client;
 var promisify = require("promisify-node");
 //Client = promisify(Client);
-function HttpClient(){}
-HttpClient.prototype.sendGetRequest = function(inputArgs){
-var client = new Client();
+function HttpClient() {}
+HttpClient.prototype.sendGetRequest = function(inputArgs) {
+    var client = new Client();
     var req = client.get(inputArgs.apiURL, inputArgs.args,
         function(data, response) {
             return inputArgs.callback(null, data)
@@ -26,18 +26,29 @@ HttpClient.prototype.sendDeleteRequest = function(inputArgs) {
         });
     requestSensors(req, inputArgs)
 }
+
 function requestSensors(req, inputArgs) {
     req.on('error', function(err) {
         console.log('request error', err);
-        inputArgs.callback(err, null)
+        var error = {
+            msg: err
+        }
+        inputArgs.callback(error, null)
     });
     req.on('requestTimeout', function(req) {
-        console.log('request has expired');
+        console.log('Request has expired');
         req.abort();
-        inputArgs.callback(err, null)
+        var error = {
+            msg: err
+        }
+        inputArgs.callback(error, null)
     });
     req.on('responseTimeout', function(res) {
         console.log('response has expired');
+        var error = {
+            msg: "Response has expired"
+        }
+        inputArgs.callback(error, null)
     });
 }
 module.exports = HttpClient;

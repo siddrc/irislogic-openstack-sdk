@@ -33,12 +33,24 @@ function authenticateImpl(inputArgs) {
     var httpclient = new HttpClient();
     anotherInputArgs.callback = function(error, tokenData) {
         var token = extractToken(tokenData);
-        inputArgs.callback(error, token);
+        if (token === null) {
+            var error = {
+                msg: "Token was returned as null"
+            }
+            inputArgs(error, null)
+        } else {
+            inputArgs.callback(null, token);
+        }
+
+
     }
     httpclient.sendPostRequest(anotherInputArgs);
 }
 
 function extractToken(data) {
-    return data.access.token.id;
+    if (data !== null)
+        return data.access.token.id;
+    else
+        return null;
 }
 module.exports = Authenticate;

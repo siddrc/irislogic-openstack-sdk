@@ -26,7 +26,10 @@ Restart.prototype.restartInstance = function(token, inputArgs) {
         httpClient.sendPostRequest(inputArgs);
 
     } else {
-        inputArgs.errorCallback(validSchema.errors);
+        var error = {
+            msg : validSchema.errors
+        }
+        inputArgs.callback(error,null);
     }
 }
 module.exports = Restart;
