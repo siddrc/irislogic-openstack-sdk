@@ -31,22 +31,15 @@ HttpClient.prototype.sendDeleteRequest = function(inputArgs) {
 function requestSensors(req, inputArgs) {
     req.on('error', function(err) {
         err = JSON.parse(CircularJSON.stringify(err));
-        console.log("Error : > ",err.code);
         inputArgs.callback(err.code, null)
     });
     req.on('requestTimeout', function(req) {
-        console.log('Request has expired');
         req.abort();
-        var error = {
-            msg: err
-        }
+        var error = "Request timed out.";
         inputArgs.callback(error, null)
     });
     req.on('responseTimeout', function(res) {
-        console.log('response has expired');
-        var error = {
-            msg: "Response has expired"
-        }
+        var error = "Response has expired";
         inputArgs.callback(error, null)
     });
 }
