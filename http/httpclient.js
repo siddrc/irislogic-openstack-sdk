@@ -1,5 +1,6 @@
 var Client = require("node-rest-client").Client;
 var promisify = require("promisify-node");
+var CircularJSON = require('circular-json');
 //Client = promisify(Client);
 function HttpClient() {}
 HttpClient.prototype.sendGetRequest = function(inputArgs) {
@@ -29,7 +30,7 @@ HttpClient.prototype.sendDeleteRequest = function(inputArgs) {
 
 function requestSensors(req, inputArgs) {
     req.on('error', function(err) {
-        console.log('request error', err);
+        console.log('request error'+CircularJSON.stringify(err));
         var error = {
             msg: err
         }
