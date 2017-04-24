@@ -37,7 +37,7 @@ function authenticateImpl(inputArgs) {
             var error = {
                 msg: "Token was returned as null"
             }
-            inputArgs(error, null)
+            inputArgs.callback(error, null)
         } else {
             inputArgs.callback(null, token);
         }
