@@ -34,10 +34,11 @@ function authenticateImpl(inputArgs) {
     anotherInputArgs.callback = function(error, tokenData) {
         var token = extractToken(tokenData);
         if (token === null) {
-            var error = {
-                msg: "Token was returned as null"
+            var errorJson = {
+                msg: "Token was not generated, that means authentication call to Openstack v2 API failed, check the Error node for details.",
+                error:error
             }
-            inputArgs.callback(error, null)
+            inputArgs.callback(errorJson, null)
         } else {
             inputArgs.callback(null, token);
         }

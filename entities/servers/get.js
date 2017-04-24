@@ -19,7 +19,7 @@ Get.prototype.getServers = function(token, inputArgs) {
         inputArgs.apiURL = inputArgs.protocol + "://" + inputArgs.openStackHost + ":" + constants.getComputePort() + "/v2/servers";
         httpClient.sendGetRequest(inputArgs);
     } else {
-        inputArgs.errorCallback(validSchema.errors);
+        inputArgs.callback(validSchema.errors,null);
     }
 }
 module.exports = Get;
