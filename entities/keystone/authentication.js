@@ -36,7 +36,7 @@ function authenticateImpl(inputArgs) {
         if (token === null) {
             var errorJson = {
                 msg: "Token was not generated, that means authentication call to Openstack v2 API failed, check the Error node for details.",
-                error:error
+                error:error.code
             }
             inputArgs.callback(errorJson, null)
         } else {
